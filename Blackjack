@@ -1,0 +1,111 @@
+import random 
+
+suit = ['Spades', 'Hearts', 'Diamonds', 'Clubs']
+spade_cards = ['11','10', '10', '10', '10', '9', '8', '7', '6', '5', '4', '3', '2']
+heart_cards = ['11','10', '10', '10', '10', '9', '8', '7', '6', '5', '4', '3', '2']
+diamond_cards = ['11','10', '10', '10', '10',  '9', '8', '7', '6', '5', '4', '3', '2']
+club_cards = ['11','10', '10', '10', '10', '9', '8', '7', '6', '5', '4', '3', '2']
+
+dealerScore = 0
+dealerHits = 0
+dealerTotal = 0
+
+playerScore = 0
+playerHits = 0
+playerTotal = 0
+
+
+player = ('What is your name? ')
+suit_decider = (random.choice(suit))
+if suit_decider == 'Spades':
+  random_value = int(random.choice(spade_cards))
+if suit_decider == 'Hearts':
+   random_value = int(random.choice(heart_cards))
+if suit_decider == 'Diamonds':
+   random_value = int(random.choice(diamond_cards))
+if suit_decider == 'Clubs':
+   random_value = int(random.choice(club_cards))
+
+
+#def acetest_Dealer():
+  #if random_value = int(random.choice(card_value)) = 11;
+    
+#def acetest_Player():
+ # if random_value = int(random.choice(card_value)) = 11 and deal;
+    
+    
+player = input('What is your name? ')
+# Starting 2 cards
+def card_Decider_Dealer():
+  global dealerHits, dealerTotal
+  suit_decider = (random.choice(suit))
+  if suit_decider == 'Spades':
+    random_value = int(random.choice(spade_cards))
+  if suit_decider == 'Hearts':
+    random_value = int(random.choice(heart_cards))
+     
+  if suit_decider == 'Diamonds':
+    random_value = int(random.choice(diamond_cards))
+    
+  if suit_decider == 'Clubs':
+    random_value = int(random.choice(club_cards))
+  dealerTotal = random_value + dealerTotal
+  dealerHits = dealerHits + 1
+  
+while dealerHits < 2:
+  card_Decider_Dealer()
+  
+def card_Decider_Player():
+  global playerHits, playerTotal
+  suit_decider = (random.choice(suit))
+    
+  if suit_decider == 'Spades':
+    random_value = int(random.choice(spade_cards))
+  if suit_decider == 'Hearts':
+    random_value = int(random.choice(heart_cards))
+  if suit_decider == 'Diamonds':
+    random_value = int(random.choice(diamond_cards))
+  if suit_decider == 'Clubs':
+    random_value = int(random.choice(club_cards))
+  playerTotal = random_value + playerTotal
+  playerHits = playerHits + 1
+
+
+while playerHits < 2:
+  card_Decider_Player()
+  
+# Print the total of the starting cards 
+if dealerHits == 2:
+  print('Dealer Total:', dealerTotal)
+if playerHits == 2:
+  print(player, "Total:", playerTotal)
+if dealerTotal < 21 and playerTotal < 21:
+  decision = input('\nDo you want to hit or stay? ')
+
+#if decision.lower() == 'hit':
+  
+#if decision.lower() == 'stay' and dealerTotal < 16:
+
+#decides if you ask the hit or stay question again
+while playerTotal < 21 and decision.lower() == 'hit':
+  card_Decider_Player()
+  print('\nDealer Total:', dealerTotal)
+  print(player, "Total:", playerTotal)
+  
+  if playerTotal >= 21:
+    decision_2 = 'nothing'
+    break
+  decision_2 = input('Do you want to hit or stay? ')
+
+
+#Deciding Winner
+if dealerTotal > playerTotal and dealerTotal <= 21:
+  print('Dealer Wins!')
+if playerTotal > dealerTotal and playerTotal <= 21:
+  print(''+player+' Wins!')
+if playerTotal > 21 and dealerTotal > 21:
+  print('Tie')
+elif playerTotal > 21:
+  print('Dealer Wins!')
+elif dealerTotal > 21:
+  print(''+player+' Wins!')
